@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 04, 2018 at 09:08 AM
+-- Generation Time: May 04, 2018 at 07:14 PM
 -- Server version: 5.7.17-log
 -- PHP Version: 5.6.30
 
@@ -44,6 +44,29 @@ INSERT INTO `tbadmin` (`a_ID`, `a_Name`, `a_Call`, `a_User`, `a_Pass`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbcart`
+--
+
+CREATE TABLE `tbcart` (
+  `m_ID` char(50) DEFAULT NULL,
+  `p_ID` int(10) DEFAULT NULL,
+  `p_Qty` int(10) DEFAULT NULL,
+  `p_Price` int(10) DEFAULT NULL,
+  `p_Description` char(50) DEFAULT NULL,
+  `pt_ID` int(10) DEFAULT NULL,
+  `c_Date` char(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbcart`
+--
+
+INSERT INTO `tbcart` (`m_ID`, `p_ID`, `p_Qty`, `p_Price`, `p_Description`, `pt_ID`, `c_Date`) VALUES
+('vpm8dklhg674c2ns2s7qjj6fn2', 101, 1, 150, 'เสื้อ', 101, '2018-05-04');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbmember`
 --
 
@@ -73,8 +96,9 @@ INSERT INTO `tbmember` (`m_ID`, `m_Name`, `m_Address`, `m_Sex`, `m_Call`, `m_Use
 CREATE TABLE `tborder` (
   `o_ID` int(10) NOT NULL,
   `m_ID` char(50) NOT NULL,
-  `p_ID` int(10) NOT NULL,
-  `price` int(20) NOT NULL,
+  `p_ID` int(10) DEFAULT NULL,
+  `price` int(20) DEFAULT NULL,
+  `p_Qty` int(5) DEFAULT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -82,11 +106,11 @@ CREATE TABLE `tborder` (
 -- Dumping data for table `tborder`
 --
 
-INSERT INTO `tborder` (`o_ID`, `m_ID`, `p_ID`, `price`, `date`) VALUES
-(1, '123', 101, 150, '2018-05-01'),
-(2, '124', 102, 300, '2018-04-30'),
-(3, '125', 103, 199, '2018-04-29'),
-(104, '126', 104, 199, '2018-05-01');
+INSERT INTO `tborder` (`o_ID`, `m_ID`, `p_ID`, `price`, `p_Qty`, `date`) VALUES
+(1, '123', 101, 150, NULL, '2018-05-01'),
+(2, '124', 102, 300, NULL, '2018-04-30'),
+(3, '125', 103, 199, NULL, '2018-04-29'),
+(104, '126', 104, 199, NULL, '2018-05-01');
 
 -- --------------------------------------------------------
 
