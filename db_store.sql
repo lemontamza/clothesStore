@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 04, 2018 at 07:14 PM
+-- Generation Time: May 05, 2018 at 05:30 AM
 -- Server version: 5.7.17-log
 -- PHP Version: 5.6.30
 
@@ -62,7 +62,22 @@ CREATE TABLE `tbcart` (
 --
 
 INSERT INTO `tbcart` (`m_ID`, `p_ID`, `p_Qty`, `p_Price`, `p_Description`, `pt_ID`, `c_Date`) VALUES
-('vpm8dklhg674c2ns2s7qjj6fn2', 101, 1, 150, 'เสื้อ', 101, '2018-05-04');
+('1efjse0uk8r4sms8a14cg62kk2', 101, 1, 150, 'เสื้อ', 101, '05-05-2018'),
+('1efjse0uk8r4sms8a14cg62kk2', 102, 1, 199, 'เสื้อ', 101, '05-05-2018'),
+('1efjse0uk8r4sms8a14cg62kk2', 103, 1, 250, 'กางเกง', 102, '05-05-2018'),
+('ookdconnl3thbs2qh5e7qj6js5', 101, 1, 150, 'เสื้อ', 101, '05-05-2018'),
+('ookdconnl3thbs2qh5e7qj6js5', 103, 1, 250, 'กางเกง', 102, '05-05-2018'),
+('ookdconnl3thbs2qh5e7qj6js5', 104, 1, 299, 'กางเกง', 102, '05-05-2018'),
+('e8gedr4ecf8rr49u5kj43gppl7', 103, 1, 250, 'กางเกง', 102, '05-05-2018'),
+('u1suj8rpordattp6t76iigsl46', 104, 1, 299, 'กางเกง', 102, '05-05-2018'),
+('u1suj8rpordattp6t76iigsl46', 103, 1, 250, 'กางเกง', 102, '05-05-2018'),
+('0tfn3s98bvkiddk1alfhd0ka81', 102, 1, 199, 'เสื้อ', 101, '05-05-2018'),
+('0tfn3s98bvkiddk1alfhd0ka81', 103, 1, 250, 'กางเกง', 102, '05-05-2018'),
+('41cac3i3gh6d7ruoqo044q9am4', 101, 1, 150, 'เสื้อ', 101, '05-05-2018'),
+('41cac3i3gh6d7ruoqo044q9am4', 102, 1, 199, 'เสื้อ', 101, '05-05-2018'),
+('41cac3i3gh6d7ruoqo044q9am4', 103, 1, 250, 'กางเกง', 102, '05-05-2018'),
+('41cac3i3gh6d7ruoqo044q9am4', 104, 1, 299, 'กางเกง', 102, '05-05-2018'),
+('p874rd2ghau54egq1oipu20115', 101, 1, 150, 'เสื้อ', 101, '05-05-2018');
 
 -- --------------------------------------------------------
 
@@ -85,7 +100,8 @@ CREATE TABLE `tbmember` (
 --
 
 INSERT INTO `tbmember` (`m_ID`, `m_Name`, `m_Address`, `m_Sex`, `m_Call`, `m_User`, `m_Pass`) VALUES
-(123, 'นรา นคร', 'สกลนคร', 'ชาย', '0949741898', 'abc', '123');
+(123, 'นรา นคร', 'สกลนคร', 'ชาย', '0949741898', 'abc', '123'),
+(1322, 'test', 'test', 'M', '123456789', 'test', 'test');
 
 -- --------------------------------------------------------
 
@@ -94,23 +110,39 @@ INSERT INTO `tbmember` (`m_ID`, `m_Name`, `m_Address`, `m_Sex`, `m_Call`, `m_Use
 --
 
 CREATE TABLE `tborder` (
-  `o_ID` int(10) NOT NULL,
+  `o_ID` int(5) NOT NULL,
   `m_ID` char(50) NOT NULL,
   `p_ID` int(10) DEFAULT NULL,
   `price` int(20) DEFAULT NULL,
   `p_Qty` int(5) DEFAULT NULL,
-  `date` date NOT NULL
+  `p_Description` char(50) DEFAULT NULL,
+  `date` char(50) DEFAULT NULL,
+  `m_Name` char(100) DEFAULT NULL,
+  `m_Address` char(200) DEFAULT NULL,
+  `m_Tel` char(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tborder`
 --
 
-INSERT INTO `tborder` (`o_ID`, `m_ID`, `p_ID`, `price`, `p_Qty`, `date`) VALUES
-(1, '123', 101, 150, NULL, '2018-05-01'),
-(2, '124', 102, 300, NULL, '2018-04-30'),
-(3, '125', 103, 199, NULL, '2018-04-29'),
-(104, '126', 104, 199, NULL, '2018-05-01');
+INSERT INTO `tborder` (`o_ID`, `m_ID`, `p_ID`, `price`, `p_Qty`, `p_Description`, `date`, `m_Name`, `m_Address`, `m_Tel`) VALUES
+(4, '1efjse0uk8r4sms8a14cg62kk2', 101, 150, 1, 'เสื้อ', '05-05-2018', 'นรา นคร', 'สกลนคร', '0949741898'),
+(4, '1efjse0uk8r4sms8a14cg62kk2', 102, 199, 1, 'เสื้อ', '05-05-2018', 'นรา นคร', 'สกลนคร', '0949741898'),
+(4, '1efjse0uk8r4sms8a14cg62kk2', 103, 250, 1, 'กางเกง', '05-05-2018', 'นรา นคร', 'สกลนคร', '0949741898'),
+(5, '1efjse0uk8r4sms8a14cg62kk2', 101, 150, 1, 'เสื้อ', '05-05-2018', 'นรา นคร', 'สกลนคร', '0949741898'),
+(5, '1efjse0uk8r4sms8a14cg62kk2', 102, 199, 1, 'เสื้อ', '05-05-2018', 'นรา นคร', 'สกลนคร', '0949741898'),
+(5, '1efjse0uk8r4sms8a14cg62kk2', 103, 250, 1, 'กางเกง', '05-05-2018', 'นรา นคร', 'สกลนคร', '0949741898'),
+(6, 'e8gedr4ecf8rr49u5kj43gppl7', 103, 250, 1, 'กางเกง', '05-05-2018', 'test', 'testest', '12341241241'),
+(7, 'u1suj8rpordattp6t76iigsl46', 104, 299, 1, 'กางเกง', '05-05-2018', '555test', '555test', '555test'),
+(7, 'u1suj8rpordattp6t76iigsl46', 103, 250, 1, 'กางเกง', '05-05-2018', '555test', '555test', '555test'),
+(8, '0tfn3s98bvkiddk1alfhd0ka81', 102, 199, 1, 'เสื้อ', '05-05-2018', '111test', '111test', '111test'),
+(8, '0tfn3s98bvkiddk1alfhd0ka81', 103, 250, 1, 'กางเกง', '05-05-2018', '111test', '111test', '111test'),
+(9, '41cac3i3gh6d7ruoqo044q9am4', 101, 150, 1, 'เสื้อ', '05-05-2018', 'testtest', 'testtesttesttest', 'testtesttest'),
+(9, '41cac3i3gh6d7ruoqo044q9am4', 102, 199, 1, 'เสื้อ', '05-05-2018', 'testtest', 'testtesttesttest', 'testtesttest'),
+(9, '41cac3i3gh6d7ruoqo044q9am4', 103, 250, 1, 'กางเกง', '05-05-2018', 'testtest', 'testtesttesttest', 'testtesttest'),
+(9, '41cac3i3gh6d7ruoqo044q9am4', 104, 299, 1, 'กางเกง', '05-05-2018', 'testtest', 'testtesttesttest', 'testtesttest'),
+(10, 'p874rd2ghau54egq1oipu20115', 101, 150, 1, 'เสื้อ', '05-05-2018', '555testcc', '555testcc', '12313456');
 
 -- --------------------------------------------------------
 
@@ -172,12 +204,6 @@ ALTER TABLE `tbadmin`
 --
 ALTER TABLE `tbmember`
   ADD PRIMARY KEY (`m_ID`);
-
---
--- Indexes for table `tborder`
---
-ALTER TABLE `tborder`
-  ADD PRIMARY KEY (`o_ID`);
 
 --
 -- Indexes for table `tbproduct`
