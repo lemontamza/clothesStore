@@ -7,18 +7,15 @@
 
 <body>
 <?php
-$host="localhost";
-$username="root";
-$password="12345678";
-$dbname="db_Store";
+include '../include/config.inc.php';
 $link=mysql_connect($host,$username,$password)or die("ไม่สามรถกับฐานข้อมูลได้ในขณะนี้");
 mysql_select_db($dbname,$link)or die("ไม่สามารถติดต่อฐานข้อมูลได้ในขณะนี้");	//ติดต่อฐานข้อมูล
 
 $txto_ID=$_POST['txto_ID']; //สร้างตัวแปรรับค่าที่ส่งมา
-$txtm_ID=$_POST['txtm_ID']; 
-$txtp_ID=$_POST['txtp_ID']; 
-$txtprice=$_POST['txtprice']; 
-$date=$_POST['date']; 
+$txtm_ID=$_POST['txtm_ID'];
+$txtp_ID=$_POST['txtp_ID'];
+$txtprice=$_POST['txtprice'];
+$date=$_POST['date'];
 
 if(isset($_POST['add']))
 {
@@ -67,12 +64,12 @@ $objQuery=mysql_query($strSQL) or die ("ไม่สามารถติตด�
       <td><? echo $objResult["p_ID"]?>&nbsp;</td>
       <td><? echo $objResult["price"]?>&nbsp;</td>
       <td><? echo $objResult["date"]?>&nbsp;</td>
-      
+
       <td><a href="edit.php?o_ID=<?php echo $objResult['o_ID']?>">แก้ไข</a></td>
       <td><a href="deleteUpd.php?o_ID=<?php echo $objResult['o_ID']?>" onClick="return confirm('คุณต้องการลบข้อมูลจริงหรือไม่')">ลบ </a></td>
-  
+
       </tr>
-    
+
     <?php
 	}
     ?>

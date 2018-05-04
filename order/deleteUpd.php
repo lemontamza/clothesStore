@@ -9,11 +9,7 @@
 <p>ลบข้อมูลเสร็จเรียบร้อย
   <?php
 $o_ID=$_GET['o_ID'];
-
-$host="localhost";
-$username="root";
-$password="12345678";
-$dbname="db_Store";
+include '../include/config.inc.php';
 $link=mysql_connect($host,$username,$password)or die("ไม่สามรถกับฐานข้อมูลได้ในขณะนี้");
 mysql_select_db($dbname,$link)or die("ไม่สามารถติดต่อฐานข้อมูลได้ในขณะนี้");	//ติดต่อฐานข้อมูล
 $strSQL= "DELETE FROM tborder WHERE o_ID = '$o_ID'";

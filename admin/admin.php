@@ -7,18 +7,16 @@
 
 <body>
 <?php
-$host="localhost";
-$username="root";
-$password="12345678";
-$dbname="db_Store";
+include '../include/config.inc.php';
+
 $link=mysql_connect($host,$username,$password)or die("ไม่สามรถกับฐานข้อมูลได้ในขณะนี้");
 mysql_select_db($dbname,$link)or die("ไม่สามารถติดต่อฐานข้อมูลได้ในขณะนี้");	//ติดต่อฐานข้อมูล
 
 $txta_ID=$_POST['txta_ID']; //สร้างตัวแปรรับค่าที่ส่งมา
-$txta_Name=$_POST['txta_Name'];  
-$txta_Call=$_POST['txta_Call']; 
-$txta_User=$_POST['txta_User']; 
-$txta_Pass=$_POST['txta_Pass']; 
+$txta_Name=$_POST['txta_Name'];
+$txta_Call=$_POST['txta_Call'];
+$txta_User=$_POST['txta_User'];
+$txta_Pass=$_POST['txta_Pass'];
 
 if(isset($_POST['add']))
 {
@@ -68,14 +66,14 @@ $objQuery=mysql_query($strSQL) or die ("ไม่สามารถติตด�
       <td><? echo $objResult["a_Call"]?>&nbsp;</td>
       <td><? echo $objResult["a_User"]?>&nbsp;</td>
       <td><? echo $objResult["a_Pass"]?>&nbsp;</td>
-      
-      <td><a href="edit.php?a_ID=<?php echo $objResult['a_ID']?>">แก้ไข</a></td>
-      <td><a href="deleteUpd.php?a_ID=<?php echo $objResult['a_ID']?>" onClick="return confirm('คุณต้องการลบข้อมูลจริงหรือไม่')">ลบ </a></td>   
 
-     
-  
+      <td><a href="edit.php?a_ID=<?php echo $objResult['a_ID']?>">แก้ไข</a></td>
+      <td><a href="deleteUpd.php?a_ID=<?php echo $objResult['a_ID']?>" onClick="return confirm('คุณต้องการลบข้อมูลจริงหรือไม่')">ลบ </a></td>
+
+
+
     </tr>
-    
+
     <?php
 	}
     ?>

@@ -8,10 +8,7 @@
 <body>
 <?php
 $a_ID=$_GET['a_ID'];
-$host="localhost";
-$username="root";
-$password="12345678";
-$dbname="db_Store";
+include '../include/config.inc.php';
 $link=mysql_connect($host,$username,$password)or die("ไม่สามรถกับฐานข้อมูลได้ในขณะนี้");
 mysql_select_db($dbname,$link)or die("ไม่สามารถติดต่อฐานข้อมูลได้ในขณะนี้");	//ติดต่อฐานข้อมูล
 $strSQL="SELECT * FROM tbadmin WHERE a_ID='$a_ID'";
@@ -26,11 +23,11 @@ $objResult = mysql_fetch_array($objQuery)
       เบอร์โทร <input type="text" name="txta_Call" id="txta_Call" value="<? echo $objResult['a_Call']?>" /><br><br>
       ชื่อล็อคอิน <input type="text" name="txta_User" id="txta_User" value="<? echo $objResult['a_User']?>" /><br><br>
       รหัสล็อคอิน <input type="text" name="txta_Pass" id="txta_Pass" value="<? echo $objResult['a_Pass']?>" /><br><br>
-      
+
         <br>
         <br>
         <input type="submit" name="edit" id="edit" value="แก้ไข">
-     
+
     </form></td>
   </tr>
 </table>

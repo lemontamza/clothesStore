@@ -6,10 +6,7 @@
 </head>
 <?php
 $o_ID=$_GET['o_ID'];
-$host="localhost";
-$username="root";
-$password="12345678";
-$dbname="db_Store";
+include '../include/config.inc.php';
 $link=mysql_connect($host,$username,$password)or die("ไม่สามรถกับฐานข้อมูลได้ในขณะนี้");
 mysql_select_db($dbname,$link)or die("ไม่สามารถติดต่อฐานข้อมูลได้ในขณะนี้");	//ติดต่อฐานข้อมูล
 $strSQL="SELECT * FROM tborder WHERE o_ID='$o_ID'";
@@ -21,9 +18,9 @@ $objResult = mysql_fetch_array($objQuery)
 <form method="post" action="update.php" >
 <table width="950" height="311">
   <tr>
-  
+
     <td height="305">
-   
+
  	  <p>รหัสการสั่งซื้อ <input type="number" name="txto_ID" id="txto_ID" value="<? echo $objResult['o_ID']?>"/><br><br>
  	    รหัสสมาชิก <input type="number" name="txtm_ID" id="txtm_ID" value="<? echo $objResult['m_ID']?>" /><br><br>
  	    รหัสสินค้า <input type="number" name="txtp_ID" id="txtp_ID" value="<? echo $objResult['p_ID']?>" /><br><br>

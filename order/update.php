@@ -9,15 +9,12 @@
 <p>
   <?php
 $txto_ID=$_POST['txto_ID']; //สร้างตัวแปรรับค่าที่ส่งมา
-$txtm_ID=$_POST['txtm_ID']; 
-$txtp_ID=$_POST['txtp_ID']; 
-$txtprice=$_POST['txtprice']; 
-$date=$_POST['date']; 
+$txtm_ID=$_POST['txtm_ID'];
+$txtp_ID=$_POST['txtp_ID'];
+$txtprice=$_POST['txtprice'];
+$date=$_POST['date'];
 
-$host="localhost";
-$username="root";
-$password="12345678";
-$dbname="db_Store";
+include '../include/config.inc.php';
 $link=mysql_connect($host,$username,$password)or die("ไม่สามรถกับฐานข้อมูลได้ในขณะนี้");
 mysql_select_db($dbname,$link)or die("ไม่สามารถติดต่อฐานข้อมูลได้ในขณะนี้");	//ติดต่อฐานข้อมูล
 $strSQL="UPDATE tborder SET m_ID='$txtm_ID', p_ID='$txtp_ID', price='$txtprice', date='$date' WHERE o_ID='$txto_ID' ";

@@ -8,10 +8,7 @@
 <body>
 <?php
 $m_ID=$_GET['m_ID'];
-$host="localhost";
-$username="root";
-$password="12345678";
-$dbname="db_Store";
+include '../include/config.inc.php';
 $link=mysql_connect($host,$username,$password)or die("ไม่สามรถกับฐานข้อมูลได้ในขณะนี้");
 mysql_select_db($dbname,$link)or die("ไม่สามารถติดต่อฐานข้อมูลได้ในขณะนี้");	//ติดต่อฐานข้อมูล
 $strSQL="SELECT * FROM tbmember WHERE m_ID='$m_ID'";
@@ -29,7 +26,7 @@ $objResult = mysql_fetch_array($objQuery)
       เบอร์โทร <input type="text" name="txtm_Call" id="txtm_Call" value="<? echo $objResult['m_Call']?>"/><br><br>
       ชื่อล็อคอิน <input type="text" name="txtm_User" id="txtm_User" value="<? echo $objResult['m_User']?>"/><br><br>
       รหัสล็อคอิน <input type="text" name="txtm_Pass" id="txtm_Pass" value="<? echo $objResult['m_Pass']?>"/><br><br>
-      
+
         <br>
         <br>
         <input type="submit" name="edit" id="edit" value="แก้ไข"></td>

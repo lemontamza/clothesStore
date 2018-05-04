@@ -8,16 +8,13 @@
 <body>
 <p>
   <?php
+include '../include/config.inc.php';
 $txta_ID=$_POST['txta_ID']; //สร้างตัวแปรรับค่าที่ส่งมา
-$txta_Name=$_POST['txta_Name'];  
-$txta_Call=$_POST['txta_Call']; 
-$txta_User=$_POST['txta_User']; 
-$txta_Pass=$_POST['txta_Pass']; 
+$txta_Name=$_POST['txta_Name'];
+$txta_Call=$_POST['txta_Call'];
+$txta_User=$_POST['txta_User'];
+$txta_Pass=$_POST['txta_Pass'];
 
-$host="localhost";
-$username="root";
-$password="12345678";
-$dbname="db_Store";
 $link=mysql_connect($host,$username,$password)or die("ไม่สามรถกับฐานข้อมูลได้ในขณะนี้");
 mysql_select_db($dbname,$link)or die("ไม่สามารถติดต่อฐานข้อมูลได้ในขณะนี้");	//ติดต่อฐานข้อมูล
 $strSQL="UPDATE tbadmin SET a_Name='$txta_Name', a_Call='$txta_Call', a_User='$txta_User', a_Pass='$txta_Pass' WHERE a_ID='$txta_ID' ";

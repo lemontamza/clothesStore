@@ -7,20 +7,17 @@
 
 <body>
 <?php
-$host="localhost";
-$username="root";
-$password="12345678";
-$dbname="db_Store";
+include '../include/config.inc.php';
 $link=mysql_connect($host,$username,$password)or die("ไม่สามรถกับฐานข้อมูลได้ในขณะนี้");
 mysql_select_db($dbname,$link)or die("ไม่สามารถติดต่อฐานข้อมูลได้ในขณะนี้");	//ติดต่อฐานข้อมูล
 
 $txtm_ID=$_POST['txtm_ID']; //สร้างตัวแปรรับค่าที่ส่งมา
-$txtm_Name=$_POST['txtm_Name']; 
-$txtm_Address=$_POST['txtm_Address']; 
-$txtm_Sex=$_POST['txtm_Sex']; 
-$txtm_Call=$_POST['txtm_Call']; 
-$txtm_User=$_POST['txtm_User']; 
-$txtm_Pass=$_POST['txtm_Pass']; 
+$txtm_Name=$_POST['txtm_Name'];
+$txtm_Address=$_POST['txtm_Address'];
+$txtm_Sex=$_POST['txtm_Sex'];
+$txtm_Call=$_POST['txtm_Call'];
+$txtm_User=$_POST['txtm_User'];
+$txtm_Pass=$_POST['txtm_Pass'];
 
 if(isset($_POST['add']))
 {
@@ -36,7 +33,7 @@ $objQuery=mysql_query($strSQL) or die ("ไม่สามารถติตด�
 
 ?>
 
-<div align="center"> 
+<div align="center">
 <table width="1345">
   <tr>
     <td><img src="image/Untitled-1.jpg" width="1345" height="220" /></td>
@@ -74,12 +71,12 @@ $objQuery=mysql_query($strSQL) or die ("ไม่สามารถติตด�
       <td><? echo $objResult["m_Call"]?>&nbsp;</td>
       <td><? echo $objResult["m_User"]?>&nbsp;</td>
       <td><? echo $objResult["m_Pass"]?>&nbsp;</td>
-      
+
       <td><a href="edit.php?m_ID=<?php echo $objResult['m_ID']?>">แก้ไข</a></td>
-      <td><a href="deleteUpd.php?m_ID=<?php echo $objResult['m_ID']?>" onClick="return confirm('คุณต้องการลบข้อมูลจริงหรือไม่')">ลบ </a></td>            
-  
+      <td><a href="deleteUpd.php?m_ID=<?php echo $objResult['m_ID']?>" onClick="return confirm('คุณต้องการลบข้อมูลจริงหรือไม่')">ลบ </a></td>
+
     </tr>
-    
+
     <?php
 	}
     ?>
