@@ -8,25 +8,26 @@ $p=null;
 $c=$_GET['c']; /*producttypeID*/
 $p=$_GET['p']; /*product ID*/
 $sessionid = session_id();
+$date = date('d-m-Y');
 /* Select Detail tbproduct*/
 $sqlp="SELECT * FROM tbproduct WHERE p_ID = '".$p."'";
 $Queryp=mysql_query($sqlp) or die ("ไม่สามารถติตด่อฐานข้อมูลได้[".$sqlp."]");	//ติดต่อฐานข้อมูลมาแสดง
 $objp = mysql_fetch_array($Queryp);
 /* Check Cart Anti Order */
-$sqlch="SELECT * FROM tbcart WHERE m_ID = '".$sessionid."'";
+$sqlch="SELECT * FROM tbcart WHERE m_ID = '".$sessionid."' AND p_ID = '".$p."' AND c_Date = '".$date."' ";
 $Querych=mysql_query($sqlch) or die ("ไม่สามารถติตด่อฐานข้อมูลได้[".$sqlp."]");	//ติดต่อฐานข้อมูลมาแสดง
 $objch = mysql_fetch_array($Querych);
-if (isset($c)) {
-  if ($objch['m_id'] != $sessionid && $objch['p_ID'] != $p && $objch['pt_ID'] != $c && $objch['o_Date'] != date('Y-m-d')) {
-    $sqlinsertcart="INSERT INTO tbcart (m_ID,p_ID,p_Qty,p_Price,pt_ID,c_Date,p_Description) VALUES('".$sessionid."','".$p."','1','".$objp['price']."','".$c."','".date('Y-m-d')."','".$objp['description']."')"; //เพิ่มข้อมูลใน table
+if (!$objch) {
+  if (isset($c,$p)) {
+    $sqlinsertcart="INSERT INTO tbcart (m_ID,p_ID,p_Qty,p_Price,pt_ID,c_Date,p_Description)
+    VALUES('".$sessionid."','".$p."','1','".$objp['price']."','".$c."','".$date."','".$objp['description']."')"; //เพิ่มข้อมูลใน table
     $result=mysql_query($sqlinsertcart,$link) or die("ไม่สามารถติตด่อฐานข้อมูลได้");
   }
-  else {
-    echo "<center>สินค้าชิ้นนี้ได้อยู่ในตะกร้าแล้ว...</center>";
-    header('Refresh: 2; URL=index.php');
-  }
 }
-
+else {
+  echo "<center>สินค้าชิ้นนี้ได้อยู่ในตะกร้าแล้ว...</center>";
+  header('Refresh: 2; URL=index.php');
+}
 
 $sqlcart="SELECT * FROM tbcart WHERE m_ID = '".$sessionid."'";
 $Querycart=mysql_query($sqlcart) or die ("ไม่สามารถติตด่อฐานข้อมูลได้[".$sqlp."]");	//ติดต่อฐานข้อมูลมาแสดง
@@ -77,6 +78,7 @@ $Querycart=mysql_query($sqlcart) or die ("ไม่สามารถติต�
           while($objcartlist = mysql_fetch_array($Querycart)){
           $n++;
           $sum = $objcartlist['p_Qty'] * $objcartlist['p_Price'];
+          $allsum = $allsum + $sum;
           ?>
             <tr>
               <td><?php echo $n;?></td>
@@ -85,8 +87,15 @@ $Querycart=mysql_query($sqlcart) or die ("ไม่สามารถติต�
               <td><?php echo $sum?></td>
             </tr>
           <?php } ?>
-
+          <tr>
+            <td colspan="3">รวมเป็นเงิน</td>
+            <td ><?php echo $allsum?></td>
+          </tr>
         </table>
+        <div align="center">
+<a href="index.php">ย้อนกลับ</a>&nbsp;<a href="checkout.php">ต่อไป</a>
+        </div>
+
     </td>
   </tr>
   <tr>

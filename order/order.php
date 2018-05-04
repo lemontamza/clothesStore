@@ -48,7 +48,7 @@ $objQuery=mysql_query($strSQL) or die ("ไม่สามารถติตด�
   <tr>
       <th width="186" height="25" bgcolor="#00FF00" scope="col"><a href="../producttype/clothesStore.php">ข้อมูลประเภทสินค้า</a></th>
       <th width="187" bgcolor="#00FF00" scope="col"><a href="../product/product.php">ข้อมูลสินค้า</a></th>
-      <th width="233" bgcolor="#00FF00" scope="col"><a href="order.php">ข้อมูลการซื้อ - ขาย</a></th>
+      <th width="233" bgcolor="#00FF00" scope="col"><a href="../order/order.php">ข้อมูลการซื้อ - ขาย</a></th>
       <th width="164" bgcolor="#00FF00" scope="col"><a href="../member/member.php">ข้อมูลสมาชิก</a></th>
       <th width="146" bgcolor="#00FF00" scope="col"><a href="../admin/admin.php">ข้อมูลผู้ดูแล</a></th>
 			<th width="146" bgcolor="#00FF00" scope="col"><a href="../admin/logout.php">ออกจากระบบ</a></th>
@@ -69,12 +69,12 @@ $objQuery=mysql_query($strSQL) or die ("ไม่สามารถติตด�
     ?>
       <tr align="center">
       <td><? echo $objResult["o_ID"]?>&nbsp;</td>
-      <td><? echo $objResult["m_ID"]?>&nbsp;</td>
+      <td><? echo $objResult["m_Name"]?>&nbsp;</td>
       <td><? echo $objResult["p_ID"]?>&nbsp;</td>
       <td><? echo $objResult["price"]?>&nbsp;</td>
       <td><? echo $objResult["date"]?>&nbsp;</td>
 
-      <td><a href="edit.php?o_ID=<?php echo $objResult['o_ID']?>">แก้ไข</a></td>
+      <td><a href="vieworder.php?o_ID=<?php echo $objResult['o_ID']?>">รายละเอียด</a></td>
       <td><a href="deleteUpd.php?o_ID=<?php echo $objResult['o_ID']?>" onClick="return confirm('คุณต้องการลบข้อมูลจริงหรือไม่')">ลบ </a></td>
 
       </tr>

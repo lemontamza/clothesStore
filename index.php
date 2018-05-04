@@ -41,7 +41,7 @@ $objQueryx=mysql_query($strSQLx) or die ("ไม่สามารถติต�
         <p>User :: <?php echo $_SESSION['MemberUser']?></p>
         <p>ชื่อ :: <?php echo $_SESSION['MemberName']?></p>
         <a href="logout.php">ออกจากระบบ</a>
-        <p><?php echo session_id();?></p>
+        <a href="cart.php">ตะกร้าสินค้า</a>
       </td>
     <?php }else{ ?>
   <td width="300">Login
@@ -50,6 +50,8 @@ $objQueryx=mysql_query($strSQLx) or die ("ไม่สามารถติต�
       <input type="password" name="password" placeholder="Password">
       <input type="submit" value="Sign-in" />
     </form>
+    <a href="register.php">สมัครสมาชิก</a>
+    <a href="cart.php">ตะกร้าสินค้า</a>
   </td>
   <?php } ?>
     <td rowspan="2">
