@@ -13,7 +13,7 @@ $sqlp="SELECT * FROM tbproduct WHERE p_ID = '".$p."'";
 $Queryp=mysql_query($sqlp) or die ("ไม่สามารถติตด่อฐานข้อมูลได้[".$sqlp."]");	//ติดต่อฐานข้อมูลมาแสดง
 $objp = mysql_fetch_array($Queryp);
 /* Check Cart Anti Order */
-$sqlch="SELECT * FROM tbcart WHERE m_ID = '".$sessionid."'";
+$sqlch="SELECT * FROM tbcart WHERE m_ID = '".$sessionid."' AND p_ID = ";
 $Querych=mysql_query($sqlch) or die ("ไม่สามารถติตด่อฐานข้อมูลได้[".$sqlp."]");	//ติดต่อฐานข้อมูลมาแสดง
 $objch = mysql_fetch_array($Querych);
 if (isset($c)) {
