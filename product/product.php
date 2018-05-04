@@ -6,7 +6,6 @@ if($_SESSION['UserID'] == "")
 		header("location:../admin/index.php");
 	}
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -27,7 +26,15 @@ $txtnote=$_POST['txtnote'];
 
 if(isset($_POST['add']))
 {
-	$sql_query="INSERT INTO tbproduct (p_ID,pt_ID,price,description,note) VALUES('$txtp_ID','$txtpt_ID','$txtprice','$txtdescription','$txtnote')"; //เพิ่มข้อมูลใน table
+	$target_dir = SRV_ROOT."imagesproduct/";
+if(move_uploaded_file($_FILES["pic"]["tmp_name"],$target_dir.$_FILES["pic"]["name"]))
+{
+	$picstatus = 'OK';
+}
+else {
+	$picstatus = 'Failed';
+}
+	$sql_query="INSERT INTO tbproduct (p_ID,pt_ID,price,description,note,p_Pic) VALUES('$txtp_ID','$txtpt_ID','$txtprice','$txtdescription','$txtnote','".$_FILES["pic"]["name"]."')"; //เพิ่มข้อมูลใน table
 	$result=mysql_query($sql_query,$link) or die("ไม่สามารถติตด่อฐานข้อมูลได้");
 
 //$strSQL="SELECT * FROM tbproducttype";

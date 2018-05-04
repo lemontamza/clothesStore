@@ -22,7 +22,7 @@ if($_SESSION['UserID'] == "")
         ราคา <input type="number" name="txtprice" id="txtprice" /><br><br>
         ลักษณะ <input type="text" name="txtdescription" id="txtdescription" /><br><br>
         หมายเหตุ <input type="text" name="txtnote" id="txtnote" /><br><br>
-
+				รูปภาพ <input	type="file" name="pic" id="pic" accept="image/*" />
         <br>
         <br>
         <input type="submit" name="add" id="add" value="เพิ่ม">
