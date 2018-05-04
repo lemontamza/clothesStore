@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 03, 2018 at 08:14 AM
+-- Generation Time: May 04, 2018 at 09:08 AM
 -- Server version: 5.7.17-log
 -- PHP Version: 5.6.30
 
@@ -96,20 +96,22 @@ INSERT INTO `tborder` (`o_ID`, `m_ID`, `p_ID`, `price`, `date`) VALUES
 
 CREATE TABLE `tbproduct` (
   `p_ID` int(10) NOT NULL,
-  `pt_ID` int(10) NOT NULL,
-  `price` int(10) NOT NULL,
-  `description` text NOT NULL,
-  `note` text NOT NULL
+  `pt_ID` int(10) DEFAULT NULL,
+  `price` int(10) DEFAULT NULL,
+  `description` text,
+  `note` text,
+  `p_Pic` char(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbproduct`
 --
 
-INSERT INTO `tbproduct` (`p_ID`, `pt_ID`, `price`, `description`, `note`) VALUES
-(101, 101, 150, 'เสื้อ', '-'),
-(102, 101, 199, 'เสื้อ', '-'),
-(103, 102, 250, 'กางเกง', '-');
+INSERT INTO `tbproduct` (`p_ID`, `pt_ID`, `price`, `description`, `note`, `p_Pic`) VALUES
+(101, 101, 150, 'เสื้อ', '-', '2.jpg'),
+(102, 101, 199, 'เสื้อ', '-', '2.jpg'),
+(103, 102, 250, 'กางเกง', '-', '1.jpg'),
+(104, 102, 299, 'กางเกง', '', 'ku1780-hgr0.png');
 
 -- --------------------------------------------------------
 
@@ -119,16 +121,17 @@ INSERT INTO `tbproduct` (`p_ID`, `pt_ID`, `price`, `description`, `note`) VALUES
 
 CREATE TABLE `tbproducttype` (
   `p_ID` int(10) NOT NULL,
-  `pt_ID` int(10) NOT NULL
+  `pt_ID` int(10) NOT NULL,
+  `pt_Name` char(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbproducttype`
 --
 
-INSERT INTO `tbproducttype` (`p_ID`, `pt_ID`) VALUES
-(101, 101),
-(102, 101);
+INSERT INTO `tbproducttype` (`p_ID`, `pt_ID`, `pt_Name`) VALUES
+(101, 101, 'เสื้อ'),
+(102, 102, 'กางเกง');
 
 --
 -- Indexes for dumped tables
