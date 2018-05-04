@@ -3,6 +3,8 @@ session_start();
 include 'include/config.inc.php';
 $link=mysql_connect($host,$username,$password)or die("ไม่สามรถกับฐานข้อมูลได้ในขณะนี้");
 mysql_select_db($dbname,$link)or die("ไม่สามารถติดต่อฐานข้อมูลได้ในขณะนี้");	//ติดต่อฐานข้อมูล
+$c=null;
+$p=null;
 $c=$_GET['c']; /*producttypeID*/
 $p=$_GET['p']; /*product ID*/
 $sessionid = session_id();
@@ -14,14 +16,17 @@ $objp = mysql_fetch_array($Queryp);
 $sqlch="SELECT * FROM tbcart WHERE m_ID = '".$sessionid."'";
 $Querych=mysql_query($sqlch) or die ("ไม่สามารถติตด่อฐานข้อมูลได้[".$sqlp."]");	//ติดต่อฐานข้อมูลมาแสดง
 $objch = mysql_fetch_array($Querych);
-if ($objch['m_id'] != $sessionid && $objch['p_ID'] != $p && $objch['o_Date'] != date('Y-m-d')) {
-  $sqlinsertcart="INSERT INTO tbcart (m_ID,p_ID,p_Qty,p_Price,pt_ID,c_Date,p_Description) VALUES('".$sessionid."','".$p."','1','".$objp['price']."','".$c."','".date('Y-m-d')."','".$objp['description']."')"; //เพิ่มข้อมูลใน table
-  $result=mysql_query($sqlinsertcart,$link) or die("ไม่สามารถติตด่อฐานข้อมูลได้");
+if (isset($c)) {
+  if ($objch['m_id'] != $sessionid && $objch['p_ID'] != $p && $objch['pt_ID'] != $c && $objch['o_Date'] != date('Y-m-d')) {
+    $sqlinsertcart="INSERT INTO tbcart (m_ID,p_ID,p_Qty,p_Price,pt_ID,c_Date,p_Description) VALUES('".$sessionid."','".$p."','1','".$objp['price']."','".$c."','".date('Y-m-d')."','".$objp['description']."')"; //เพิ่มข้อมูลใน table
+    $result=mysql_query($sqlinsertcart,$link) or die("ไม่สามารถติตด่อฐานข้อมูลได้");
+  }
+  else {
+    echo "<center>สินค้าชิ้นนี้ได้อยู่ในตะกร้าแล้ว...</center>";
+    header('Refresh: 2; URL=index.php');
+  }
 }
-else {
-  echo "<center>สินค้าชิ้นนี้ได้อยู่ในตะกร้าแล้ว...</center>";
-  header('Refresh: 2; URL=index.php');
-}
+
 
 $sqlcart="SELECT * FROM tbcart WHERE m_ID = '".$sessionid."'";
 $Querycart=mysql_query($sqlcart) or die ("ไม่สามารถติตด่อฐานข้อมูลได้[".$sqlp."]");	//ติดต่อฐานข้อมูลมาแสดง
