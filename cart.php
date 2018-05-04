@@ -28,7 +28,6 @@ else {
   echo "<center>สินค้าชิ้นนี้ได้อยู่ในตะกร้าแล้ว...</center>";
   header('Refresh: 2; URL=index.php');
 }
-
 $sqlcart="SELECT * FROM tbcart WHERE m_ID = '".$sessionid."'";
 $Querycart=mysql_query($sqlcart) or die ("ไม่สามารถติตด่อฐานข้อมูลได้[".$sqlp."]");	//ติดต่อฐานข้อมูลมาแสดง
 
