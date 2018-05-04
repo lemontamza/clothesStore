@@ -1,3 +1,11 @@
+<?php
+session_start();
+include '../include/config.inc.php';
+if($_SESSION['UserID'] == "")
+	{
+		header("location:../admin/index.php");
+	}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,11 +24,11 @@
       เบอร์โทร <input type="text" name="txtm_Call" id="txtm_Call" /><br><br>
       ชื่อล็อคอิน <input type="text" name="txtm_User" id="txtm_User" /><br><br>
       รหัสล็อคอิน <input type="text" name="txtm_Pass" id="txtm_Pass" /><br><br>
-      
+
         <br>
         <br>
         <input type="submit" name="add" id="add" value="เพิ่ม">
-     
+
     </form></td>
   </tr>
 </table>

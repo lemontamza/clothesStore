@@ -1,3 +1,11 @@
+<?php
+session_start();
+include '../include/config.inc.php';
+if($_SESSION['UserID'] == "")
+	{
+		header("location:../admin/index.php");
+	}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,11 +22,11 @@
         ราคา <input type="number" name="txtprice" id="txtprice" /><br><br>
         ลักษณะ <input type="text" name="txtdescription" id="txtdescription" /><br><br>
         หมายเหตุ <input type="text" name="txtnote" id="txtnote" /><br><br>
-      
+
         <br>
         <br>
         <input type="submit" name="add" id="add" value="เพิ่ม">
-     
+
     </form>
    </td>
   </tr>

@@ -1,11 +1,16 @@
+<?php
+session_start();
+include '../include/config.inc.php';
+if($_SESSION['UserID'] == "")
+	{
+		header("location:../admin/index.php");
+	}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php
 $p_ID=$_GET['p_ID'];
-$host="localhost";
-$username="root";
-$password="12345678";
-$dbname="db_Store";
+
 $link=mysql_connect($host,$username,$password)or die("ไม่สามรถกับฐานข้อมูลได้ในขณะนี้");
 mysql_select_db($dbname,$link)or die("ไม่สามารถติดต่อฐานข้อมูลได้ในขณะนี้");	//ติดต่อฐานข้อมูล
 $strSQL="SELECT * FROM tbproduct WHERE p_ID='$p_ID'";
@@ -23,9 +28,9 @@ $objResult = mysql_fetch_array($objQuery)
 <form method="post" action="update.php" >
 <table width="950" height="311">
   <tr>
-  
+
     <td height="305">
-   
+
     รหัสสินค้า <input type="number" name="txtp_ID" id="txtp_ID" value="<? echo $objResult['p_ID']?>"/>
       <br />
       <br />

@@ -1,3 +1,11 @@
+<?php
+session_start();
+include '../include/config.inc.php';
+if($_SESSION['UserID'] == "")
+	{
+		header("location:../admin/index.php");
+	}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,7 +15,6 @@
 
 <body>
 <?php
-include '../include/config.inc.php';
 $link=mysql_connect($host,$username,$password)or die("ไม่สามรถกับฐานข้อมูลได้ในขณะนี้");
 mysql_select_db($dbname,$link)or die("ไม่สามารถติดต่อฐานข้อมูลได้ในขณะนี้");	//ติดต่อฐานข้อมูล
 
@@ -46,6 +53,7 @@ $objQuery=mysql_query($strSQL) or die ("ไม่สามารถติตด�
       <th width="233" bgcolor="#00FF00" scope="col"><a href="../order/order.php">ข้อมูลการซื้อ - ขาย</a></th>
       <th width="164" bgcolor="#00FF00" scope="col"><a href="member.php">ข้อมูลสมาชิก</a></th>
       <th width="146" bgcolor="#00FF00" scope="col"><a href="../admin/admin.php">ข้อมูลผู้ดูแล</a></th>
+			<th width="146" bgcolor="#00FF00" scope="col"><a href="../admin/logout.php">ออกจากระบบ</a></th>
   </tr>
 </table>
 <table width="1148" border="1">
